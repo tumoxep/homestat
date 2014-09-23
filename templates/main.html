@@ -1,0 +1,85 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Дата</th>
+			<th colspan="4">Водоснабжение</th>
+			<th>Электричество</th>
+			<th>Газ</th>
+		</tr>
+		<tr>
+			<th></th>
+			<th colspan="2">Горячее</th>
+			<th colspan="2">Холодное</th>
+			<th></th>
+			<th></th>
+		</tr>
+		<tr>
+			<th></th>
+			<th>Ванна</th>
+			<th>Кухня</th>
+			<th>Ванна</th>
+			<th>Кухня</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-hide="addNew">
+			<td colspan="7">
+				<button class="btn btn-link center-block" ng-click="addNew = !addNew;">
+					Добавить
+				</button>
+			</td>
+		</tr>
+		<tr ng-show="addNew">
+			<td>
+				<div class="row">
+					<div class="col-sm-8">
+						<input type="text" class="form-control input-sm" datepicker-popup="dd.MM.yyyy" ng-model="dt" is-open="dpopened" init-date="dt" ng-required="true" close-text="Закрыть" current-text="Сегодня" clear-text="Очистить" />
+					</div>
+					<div class="col-sm-4">
+						<button type="button" class="btn btn-default btn-sm" ng-click="openDatepicker($event)">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</div>
+				</div>
+			</td>
+			<td>
+				<input class="form-control input-sm" type="text" ng-model="newRec.hb">
+			</td>
+			<td>
+				<input class="form-control input-sm" type="text" ng-model="newRec.hk">
+			</td>
+			<td>
+				<input class="form-control input-sm" type="text" ng-model="newRec.cb">
+			</td>
+			<td>
+				<input class="form-control input-sm" type="text" ng-model="newRec.ck">
+			</td>
+			<td>
+				<input class="form-control input-sm" type="text" ng-model="newRec.el">
+			</td>
+			<td>
+				<div class="row">
+					<div class="col-sm-8">
+						<input class="form-control input-sm" type="text" ng-model="newRec.gs">
+					</div>
+					<div class="col-sm-4">
+						<button type="button" class="btn btn-primary btn-sm" ng-click="pushData()">
+							<span class="glyphicon glyphicon-ok"></span>
+						</button>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr ng-repeat="rec in all.vals track by $index">
+			<td>{{rec.day}}.{{rec.month}}.{{rec.year}}</td>
+			<td>{{rec.hb}}</td>
+			<td>{{rec.hk}}</td>
+			<td>{{rec.cb}}</td>
+			<td>{{rec.ck}}</td>
+			<td>{{rec.el}}</td>
+			<td>{{rec.gs}}</td>
+		</tr>
+	</tbody>
+</table>
