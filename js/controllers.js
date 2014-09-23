@@ -1,17 +1,7 @@
 angular.module('home.controllers', [])
 .controller('MainCtrl', function($scope, $q, $modal, pHome) {
 	$scope.addNew = false;
-	$scope.newRec = {
-		day: null,
-		month: null,
-		year: null,
-		hb: null,
-		hk: null,
-		cb: null,
-		ck: null,
-		el: null,
-		gs: null
-	}
+	$scope.reverse = false;
 	$scope.openDatepicker = function($event) {
 		$event.preventDefault();
 		$event.stopPropagation();
@@ -24,15 +14,29 @@ angular.module('home.controllers', [])
 		$scope.all.vals.push($scope.newRec);
 		$scope.addNew = false;
 		pHome.pushData($scope.all).then(function(res) {
-			console.log(res);
+			$scope.refreshData();
 		}, function(err) {
 			console.log(err);
 		})
 	}
-	pHome.fetchData('all').then(function(res) {
-		$scope.all = res;
-		$scope.dt = new Date(res.vals[res.vals.length-1].year+'-'+res.vals[res.vals.length-1].month+'-'+res.vals[res.vals.length-1].day);
-	}, function(err) {
-		console.log(err);
-	})
+	$scope.refreshData = function() {
+		pHome.fetchData('all').then(function(res) {
+			$scope.newRec = {
+				day: null,
+				month: null,
+				year: null,
+				hb: null,
+				hk: null,
+				cb: null,
+				ck: null,
+				el: null,
+				gs: null
+			}
+			$scope.all = res;
+			$scope.dt = new Date(res.vals[res.vals.length-1].year+'-'+res.vals[res.vals.length-1].month+'-'+res.vals[res.vals.length-1].day);
+		}, function(err) {
+			console.log(err);
+		})		
+	}
+	$scope.refreshData();
 })

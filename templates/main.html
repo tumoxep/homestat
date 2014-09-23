@@ -1,7 +1,9 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th>Дата</th>
+			<th>
+				<a ng-click="reverse = !reverse;"><i class="glyphicon glyphicon-sort"></i></a> Дата
+			</th>
 			<th colspan="4">Водоснабжение</th>
 			<th>Электричество</th>
 			<th>Газ</th>
@@ -72,7 +74,7 @@
 				</div>
 			</td>
 		</tr>
-		<tr ng-repeat="rec in all.vals track by $index">
+		<tr ng-repeat="rec in all.vals | orderBy:'hb':reverse track by $index">
 			<td>{{rec.day}}.{{rec.month}}.{{rec.year}}</td>
 			<td>{{rec.hb}}</td>
 			<td>{{rec.hk}}</td>
