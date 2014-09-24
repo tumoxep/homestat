@@ -11,6 +11,12 @@ angular.module('home.controllers', [])
 		$scope.newRec.day = $scope.dt.getDate();
 		$scope.newRec.month = $scope.dt.getMonth()+1;
 		$scope.newRec.year = $scope.dt.getFullYear();
+		$scope.newRec.hb = +$scope.newRec.hb;
+		$scope.newRec.hk = +$scope.newRec.hk;
+		$scope.newRec.cb = +$scope.newRec.cb;
+		$scope.newRec.ck = +$scope.newRec.ck;
+		$scope.newRec.el = +$scope.newRec.el;
+		$scope.newRec.gs = +$scope.newRec.gs;
 		$scope.all.vals.push($scope.newRec);
 		$scope.addNew = false;
 		pHome.pushData($scope.all).then(function(res) {
