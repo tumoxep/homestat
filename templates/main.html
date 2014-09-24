@@ -1,29 +1,23 @@
 <div class="table-responsive">
-<table class="table table-striped">
+<table class="table table-striped table-bordered">
 	<thead>
 		<tr>
-			<th class="col-md-2">
+			<th class="col-md-2" rowspan="3">
 				<a ng-click="reverse = !reverse;"><i class="glyphicon glyphicon-sort"></i></a> Дата
 			</th>
 			<th colspan="4" class="col-md-6">Водоснабжение</th>
-			<th class="col-md-2">Электричество</th>
-			<th class="col-md-2">Газ</th>
+			<th class="col-md-2" rowspan="3">Электричество</th>
+			<th class="col-md-2" rowspan="3">Газ</th>
 		</tr>
 		<tr>
-			<th></th>
 			<th colspan="2">Горячее</th>
 			<th colspan="2">Холодное</th>
-			<th></th>
-			<th></th>
 		</tr>
 		<tr>
-			<th></th>
 			<th>Ванна</th>
 			<th>Кухня</th>
 			<th>Ванна</th>
 			<th>Кухня</th>
-			<th></th>
-			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -34,7 +28,7 @@
 				</button>
 			</td>
 		</tr>
-		<tr ng-show="addNew">
+		<tr ng-show="addNew" class="warning">
 			<td>
 				<div class="input-group input-group-sm">
 					<input type="text" class="form-control input-sm" datepicker-popup="dd.MM.yyyy" ng-model="dt" is-open="dpopened" init-date="dt" ng-required="true" close-text="Закрыть" current-text="Сегодня" clear-text="Очистить" />
@@ -64,7 +58,7 @@
 				<input class="form-control input-sm" type="text" ng-model="newRec.gs">
 			</td>
 		</tr>
-		<tr ng-show="addNew">
+		<tr ng-show="addNew" class="warning">
 			<td colspan="7">
 				<button type="button" class="btn btn-primary btn-sm pull-right" ng-click="pushData()">
 					<span class="glyphicon glyphicon-ok"></span>
