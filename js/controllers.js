@@ -5,7 +5,7 @@ angular.module('home.controllers', [])
 	$scope.openDatepicker = function($event) {
 		$event.preventDefault();
 		$event.stopPropagation();
-		$scope.dpopened = true;
+		$scope.dpopened = !$scope.dpopened;
 	}
 	$scope.pushData = function() {
 		$scope.newRec.day = $scope.dt.getDate();
